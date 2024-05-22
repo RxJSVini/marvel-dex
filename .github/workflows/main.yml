@@ -35,8 +35,8 @@ jobs:
         file: ./src/Dockerfile
         push: true
         tags: |
-          ${{ env.REGISTRY }}/marvel-dex-live:${{ steps.generate_tag.outputs.sha }}
-          ${{ env.REGISTRY }}/marvel-dex-live:latest
+          ${{ env.REGISTRY }}/marvel-live:${{ steps.generate_tag.outputs.sha }}
+          ${{ env.REGISTRY }}/marvel-live:latest
   CD:
     needs: [CI]
     runs-on: ubuntu-latest
@@ -46,5 +46,5 @@ jobs:
       with:
         app-name: marvel-live
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        images: ${{ env.REGISTRY }}/marvel-dex-live:${{ steps.generate_tag.outputs.sha }}
+        images: ${{ env.REGISTRY }}/marvel-live:${{ steps.generate_tag.outputs.sha }}
         slot-name: production
