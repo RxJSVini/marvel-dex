@@ -38,9 +38,9 @@ jobs:
           ${{ env.REGISTRY }}/marvel-dex-live:${{ steps.generate_tag.outputs.sha }}
           ${{ env.REGISTRY }}/marvel-dex-live:latest
   CD:
+    needs: [CI]
     runs-on: ubuntu-latest
     steps:
-
     - name: 'Deploy no Azure Application Service'
       uses: azure/webapps-deploy@v2
       with:
