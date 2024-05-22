@@ -37,3 +37,12 @@ jobs:
         tags: |
           ${{ env.REGISTRY }}/marvel-dex-live:${{ steps.generate_tag.outputs.sha }}
           ${{ env.REGISTRY }}/marvel-dex-live:latest
+  CD:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: 'Deploy no Azure Application Service'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: live-webapp-go
+        publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
