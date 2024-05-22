@@ -19,7 +19,7 @@ jobs:
         password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
     
     - name: "Docker Build e Push"
-      uses: docker/build-push-action@v5.3.0
+      uses: docker/build-push-action@v5
       with:
         context: ./src
         file: ./src/Dockerfile
