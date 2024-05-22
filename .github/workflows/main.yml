@@ -15,7 +15,7 @@ jobs:
       uses: docker/login-action@v3
       with:
         registry: ghcr.io
-        username: ${{ secrets.DOCKER_REGISTRY_ACCOUNT }}
+        username: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
         password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
     
     - name: "Docker Build e Push"
@@ -27,4 +27,3 @@ jobs:
         tags: |
             rxjsvini/marvel-dex-live: ${{ github.run_number }}
             rxjsvini/marvel-dex-live:latest
-        
